@@ -1,0 +1,33 @@
+#this is a code meant for learning and helping
+#it is at the moment not perfect but it wil do it job
+#this code controls the servo with ads1115 converter and potentiometer in gpiozero library
+from gpiozero import AngularServo # import the servo library
+from gpiozero.pins.pigpio import PiGPIOFactory #install the pin factory library
+factory = PiGPIOFactory() #set the pin factory
+from time import sleep # import sleep function
+import board 
+import busio
+i2c = busio.I2C(board.SCL, board.SDA) #import i2c 
+import adafruit_ads1x15.ads1115 as ADS # import the ads1115 
+from adafruit_ads1x15.analog_in import AnalogIn # import analog input
+ads = ADS.ADS1115(i2c)
+chan = AnalogIn(ads, ADS.P0)# set knob pin
+serf = AngularServo(21,pin_factory=factory) # set Servo with pin factory
+def get_voltage(ads):  # define voltage
+ return 0.1/  3.3 *(1023) #define servo knob value with voltage
+while True: # put the code in a loop
+    
+
+    print("servo",serf.value) # print servo value
+    print("voltage",chan.voltage) # print chan/knob value
+    #prepare the chan.voltage gpiozero limit
+    if (chan.voltage >=1):
+       serf.value >= 1
+    else: 
+         serf.value = chan.voltage #running the code
+         sleep(0.5) #end it with sleep function
+         # warning this code it can overshoot its limit that cause the code to error
+        
+
+
+
