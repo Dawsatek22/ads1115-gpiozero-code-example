@@ -1,6 +1,6 @@
-#this is a code meant for learning and helping
-#it is at the moment not perfect but it wil do it job
-#this code controls the servo with ads1115 converter and potentiometer in gpiozero library
+#this is a code meant for learning and helping to control the ads1115 module with gpiozero
+it is at the moment not perfect but it wil do it job
+this code controls the servo with ads1115 converter and potentiometer in gpiozero library
 from gpiozero import AngularServo # import the servo library
 from gpiozero.pins.pigpio import PiGPIOFactory #install the pin factory library
 factory = PiGPIOFactory() #set the pin factory
